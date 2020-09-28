@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment = "head">
+    <meta charset="UTF-8"/>
+    <title>Coding Events</title>
+
+    <link th:href = "@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel = "stylesheet">
+    <script th:src = "@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+    <!--    <script th:src = "@{/script.js}"></script>-->
+    <!--    <link th:href = "@{/styles.css}" rel = "stylesheet">-->
+
+</head>
+<body>
+
+<nav th:fragment = "navigation">
+    <ul class = "nav">
+        <li class = "nav-item"><a class = "nav-link" href = "/events">All Events</a></li>
+        <li class = "nav-item"><a class = "nav-link" href = "/events/create">Create Event</a></li>
+    </ul>
+</nav>
+
+<td th:fragment = "address">1985 West 4th Ave.</td>
+
+</body>
+</html>
