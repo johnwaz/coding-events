@@ -22,21 +22,21 @@ public class EventController {
 
     // lives at /events/create
     @GetMapping("create")
-    public String renderCreateEventForm(Model model) {
+    public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         return "events/create";
     }
 
     // lives at /events/create
     @PostMapping("create")
-    public String createEvent(@ModelAttribute Event newEvent) {
+    public String processCreateEventForm(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
         return "redirect:";
     }
 
     // Same as method above without Model-Binding
 //    @PostMapping("create")
-//    public String createEvent(@RequestParam String eventName, @RequestParam String eventDescription) {
+//    public String processCreateEvent(@RequestParam String eventName, @RequestParam String eventDescription) {
 //        EventData.add(new Event(eventName, eventDescription));
 //        return "redirect:";
 //    }
@@ -49,7 +49,7 @@ public class EventController {
     }
 
     @PostMapping("delete")
-    public String renderDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
         if (eventIds != null) {
             for (int id : eventIds) {
                 EventData.remove(id);
