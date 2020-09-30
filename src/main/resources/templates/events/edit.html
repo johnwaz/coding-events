@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace = "fragments :: head"></head>
+<body class = "container">
+
+<header th:replace = "fragments :: header"></header>
+
+<th:block th:unless = "${event}">
+    <p>The event you are trying to edit does not exist.</p>
+</th:block>
+<th:block th:if = "${event}">
+<form method = "post" th:action = "@{/events/edit}">
+    <div class = "form-group">
+        <label>Name
+            <input type = "text" name = "name" class = "form-control" th:value = "${event.name}">  <!-- name = "eventName" without Model-Binding -->
+        </label>
+    </div>
+    <div class = "form-group">
+        <label>Description
+            <input type = "text" name = "description" class = "form-control" th:value = "${event.description}">  <!-- name = "eventDescription" without Model-Binding -->
+        </label>
+    </div>
+    <input type="hidden" th:value="${event.id}" name="eventId" />
+    <div class = "form-group">
+        <input type = "submit" value = "Edit Event" class = "btn btn-success">
+    </div>
+</form>
+</th:block>
+
+</body>
+</html>
