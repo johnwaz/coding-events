@@ -1,8 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 public class Event {
@@ -23,12 +21,26 @@ public class Event {
 
     private EventType type;
 
-    public Event(String name, String description, String contactEmail, EventType type) {
+    @NotBlank(message = "Location required")
+    private String location;
+
+    @Min(value = 1, message = "At least one attendee required")
+    private int attendees;
+
+    @AssertTrue(message = "Registration required")
+    private boolean registration;
+
+    public Event(String name, String description, String contactEmail,
+                 EventType type, String location, int attendees,
+                 boolean registration) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
+        this.location = location;
+        this.attendees = attendees;
+        this.registration = registration;
     }
 
     public Event() {
@@ -36,6 +48,7 @@ public class Event {
         nextId++;
     }
 
+    // Getters and Setters:
     public String getName() {
         return name;
     }
@@ -68,10 +81,35 @@ public class Event {
         this.type = type;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(int attendees) {
+        this.attendees = attendees;
+    }
+
+    public boolean isRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(boolean registration) {
+        this.registration = registration;
+    }
+
     public int getId() {
         return id;
     }
 
+    // toString, equals, and hashCode methods
     @Override
     public String toString() {
         return name;
