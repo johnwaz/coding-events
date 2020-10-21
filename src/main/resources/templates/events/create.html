@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head th:replace = "fragments :: head"></head>
-<body class = "container">
+<head th:replace="fragments :: head"></head>
+<body class="container">
 
-<header th:replace = "fragments :: header"></header>
+<header th:replace="fragments :: header"></header>
 
-<form method = "post" action = "/events/create">
-    <div class = "form-group">
+<form method="post">
+    <div class="form-group">
         <label>Name
-            <input th:field = "${event.name}" class = "form-control">  <!-- name = "eventName" without Model-Binding / type = "text" name = "name" with Model-Binding -->
+            <input th:field="${event.name}" class="form-control">
         </label>
-        <p class = "error" th:errors = "${event.name}"></p>
+        <p class="error" th:errors="${event.name}"></p>
     </div>
-    <div class = "form-group">
+    <div class="form-group">
         <label>Description
-            <input th:field = "${event.description}" class = "form-control">  <!-- name = "eventDescription" without Model-Binding / type = "text" name = "description" with Model-Binding -->
+            <input th:field="${event.description}" class="form-control">
         </label>
-        <p class = "error" th:errors = "${event.description}"></p>
+        <p class="error" th:errors="${event.description}"></p>
     </div>
-    <div class = "form-group">
+    <div class="form-group">
         <label>Contact Email
-            <input th:field = "${event.contactEmail}" class = "form-control">
+            <input th:field="${event.contactEmail}" class="form-control">
         </label>
-        <p class = "error" th:errors = "${event.contactEmail}"></p>
+        <p class="error" th:errors="${event.contactEmail}"></p>
     </div>
-    <div class = "form-group">
+    <div class="form-group">
         <label>Type
-            <select th:field = "${event.type}">
-                <option th:each = "type : ${types}"
-                        th:value = "${type}"
-                        th:text = "${type.displayName}">
-                </option>
+            <select th:field="${event.type}">
+                <option th:each="type : ${types}"
+                        th:value="${type}"
+                        th:text="${type.displayName}"
+                ></option>
             </select>
         </label>
     </div>
-    <div class = "form-group">
-        <input type = "submit" value = "Create Event" class = "btn btn-success">
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-success">
     </div>
 </form>
 

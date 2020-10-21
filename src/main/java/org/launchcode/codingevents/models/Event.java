@@ -23,7 +23,7 @@ public class Event {
     private String description;
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email. Try again")
+    @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
     private EventType type;
