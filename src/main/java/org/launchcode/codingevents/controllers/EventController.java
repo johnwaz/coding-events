@@ -30,7 +30,8 @@ public class EventController {
     private TagRepository tagRepository;
 
     @GetMapping
-    public String displayEvents(@RequestParam(required = false) Integer categoryId, @RequestParam(required = false) Integer tagId, Model model) {
+    public String displayEvents(@RequestParam(required = false) Integer categoryId,
+                                @RequestParam(required = false) Integer tagId, Model model) {
 
         if (categoryId == null && tagId == null) {
             model.addAttribute("title", "All Events");

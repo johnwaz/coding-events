@@ -21,7 +21,7 @@
     <tr>
         <th>Tags</th>
         <td>
-            <span th:each="tag : ${tags}" th:text="${tag.displayName} + ' '"></span>
+            <a th:each="tag : ${tags}" th:text="${tag.displayName} + ' '" th:href="'/events?tagId=' + ${tag.id}"></a>
         </td>
     </tr>
 </table>
